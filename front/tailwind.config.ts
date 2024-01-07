@@ -17,7 +17,10 @@ const config: Config = {
         transparent: 'transparent',
         current: 'currentColor',
         primary: '#1250c4',
-        secondary: '#de0059',
+        secondary: {
+          DEFAULT: '#de0059',
+          900: '#69012b'
+        },
       },
     },
   },
