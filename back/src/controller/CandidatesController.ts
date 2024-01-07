@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
 import { z } from 'zod'
+import CandidateRepository, { ICandidate } from '../repository/CandidatesRepository';
+
+const candidateRepository = new CandidateRepository()
 
 const searchSchema = z.object({
   skills: z.string().min(1),
@@ -21,12 +24,13 @@ class CandidatesController {
 
       const { skills } = queryParse.data
       const skills_splited = skills.split(',')
+      const candidate = await candidateRepository.findBySkills(skills_splited);
 
-      return response.json({
-        "id": "ae588a6b-4540-5714-bfe2-a5c2a65f547a",
-        "name": "John Coder",
-        "skills": ["javascript", "es6", "nodejs", "express"]
-      }).status(200);
+      if (!candidate) {
+        return response.status(400).json();
+      }
+
+      return response.json(candidate)
     } catch (error) {
       return response.status(500).json()
     }
@@ -40,11 +44,12 @@ class CandidatesController {
         return response.status(400).json();
       }
 
-      const candidate = queryParse.data
+      const candidate: ICandidate = queryParse.data
+      const newCandidate = await candidateRepository.create(candidate);
 
-      return response.status(201).json(candidate);
+      return response.status(201).json({ id: newCandidate.id, ...candidate });
     } catch (error) {
-      return response.status(500).json()
+      return response.status(500).json();
     }
   }
 }
