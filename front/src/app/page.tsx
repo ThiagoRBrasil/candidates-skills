@@ -13,7 +13,7 @@ export default function Dashboard() {
             <ButtonLink onClick={'candidates/search'} type="primary" label="Buscar" />
           </div>
           <div className="mx-2">
-            <ButtonLink onClick={'/'} type="secondary" label="Cadastrar" icon={SlMagnifier} />
+            <ButtonLink onClick={'candidates/new'} type="secondary" label="Cadastrar" icon={SlMagnifier} />
           </div>
         </section>
       </div>

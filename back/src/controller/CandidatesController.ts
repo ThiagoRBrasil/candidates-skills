@@ -30,7 +30,7 @@ class CandidatesController {
         return response.status(400).json();
       }
 
-      return response.json(candidate)
+      return response.status(200).json(candidate)
     } catch (error) {
       return response.status(500).json()
     }

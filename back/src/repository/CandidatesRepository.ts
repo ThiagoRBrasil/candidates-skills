@@ -38,7 +38,10 @@ export default class CandidateRepository {
 
       if (withSkills.length > maxSkillDiscovered) {
         maxSkillDiscovered = withSkills.length;
-        candidateWithMoreSkills = candidate;
+        candidateWithMoreSkills = {
+          ...candidate,
+          skills: candidate.skills.map((skill) => skill.name).join(', '),
+        };
       }
     }
 
