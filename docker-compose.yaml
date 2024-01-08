@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "8880:3306"
+    volumes:
+      - candidate_volume:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=cantidates_skills
+      - MYSQL_ROOT_PASSWORD=remote
+    networks:
+      - app-networks
+
+  back:
+    image: node:latest
+    environment:
+      NODE_ENV: dev
+    volumes:
+      - ./back/:/app
+    working_dir: /app
+    ports:
+      - "3333:3333"
+    command: >
+      bash -c "npm install && npx prisma generate && npx prisma migrate deploy && npm run dev"
+    networks:
+      - app-networks
+    depends_on:
+      - mysql
+
+  front:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./front/:/var/www/html
+    networks:
+      - app-networks
+    depends_on:
+      - back
+ 
+
+networks:
+  app-networks:
+    driver: bridge
+
+volumes:
+  candidate_volume: {}
