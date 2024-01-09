@@ -42,7 +42,7 @@ Em seguida será possível você acessar a aplicação diretamente pelo seu nave
 
 ### Request
 
-`GET /candidates/search?javascript,express,mongodb`
+`GET /candidates/search?skills=javascript,express,mongodb`
 
 Encontra e retorna o candidato que possui a maioria das habilidades do conjunto fornecido (separadas por vírgulas). Se um candidato possuir todas as habilidades listadas (3 de 3) ou tiver mais do que os outros candidatos, ele é considerado o melhor e é retornado.
 
