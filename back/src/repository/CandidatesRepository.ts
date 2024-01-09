@@ -30,17 +30,17 @@ export default class CandidateRepository {
     let maxSkillDiscovered = 0;
 
     for (const candidate of candidates) {
-      const skillsCandidate = candidate.skills.map((skill) => skill.name);
+      const skillsCandidate = candidate.skills.map((skill) => skill.name.toLowerCase());
 
       const withSkills = skills.filter((skill) =>
-        skillsCandidate.includes(skill)
+        skillsCandidate.includes(skill.toLowerCase())
       );
 
       if (withSkills.length > maxSkillDiscovered) {
         maxSkillDiscovered = withSkills.length;
         candidateWithMoreSkills = {
           ...candidate,
-          skills: candidate.skills.map((skill) => skill.name).join(', '),
+          skills: candidate.skills.map((skill) => skill.name),
         };
       }
     }

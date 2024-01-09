@@ -1,10 +1,10 @@
 import CandidateRepository, { ICandidate } from '../CandidatesRepository';
 
 describe('CandidatesRepository', () => {
-  let candidateRepo: CandidateRepository;
+  let candidateRepository: CandidateRepository;
 
   beforeAll(() => {
-    candidateRepo = new CandidateRepository();
+    candidateRepository = new CandidateRepository();
   });
 
   afterAll(async () => {
@@ -16,14 +16,14 @@ describe('CandidatesRepository', () => {
       skills: ['JavaScript', 'TypeScript', 'Node.js'],
     };
 
-    const result = await candidateRepo.create(mockCandidate);
+    const result = await candidateRepository.create(mockCandidate);
     expect(result).toBeDefined();
   });
 
   test('find candidate by skills', async () => {
     const skillsToSearch = ['JavaScript', 'TypeScript'];
 
-    const result = await candidateRepo.findBySkills(skillsToSearch);
+    const result = await candidateRepository.findBySkills(skillsToSearch);
 
     expect(result).toMatchObject({
       name: expect.any(String),

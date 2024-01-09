@@ -109,7 +109,7 @@ export default function FormSearch() {
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap">{candidate.id}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{candidate.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap">{candidate.skills}</td>
+                <td className="px-6 py-4 whitespace-nowrap">{candidate.skills.join(', ')}</td>
               </tr>
             </tbody>
           </table>
