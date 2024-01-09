@@ -1,6 +1,6 @@
 # Encontre seu candidato!
 
-Essa aplicação
+Essa aplicação implementa um sistema de cadastro de candidatos e possibilita encontrar o mais apto por meio de suas habilidades
 
 ### Tecnologias utilizadas
 
@@ -36,7 +36,7 @@ Primeiramente será necessário executar o `docker-compose`, dessa forma será e
 
     docker-compose up -d
 
-Em seguida será possível você acessar a aplicação diretamente pelo seu navegador [Clicando Aqui](http://localhost:3000/)
+Em seguida será possível você acessar a aplicação diretamente pelo seu navegador [Clicando Aqui](http://localhost:3000/).
 
 ## API
 
